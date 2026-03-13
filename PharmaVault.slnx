@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PharmaVault.Core/PharmaVault.Core.csproj" />
+    <Project Path="src/PharmaVault.Data/PharmaVault.Data.csproj" />
+    <Project Path="src/PharmaVault.Web/PharmaVault.Web.csproj" />
+  </Folder>
+</Solution>
