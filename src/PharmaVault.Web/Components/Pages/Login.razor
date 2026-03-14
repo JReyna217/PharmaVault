@@ -1,0 +1,53 @@
+﻿@page "/"
+@layout Layout.AuthLayout
+
+
+<PageTitle>Login - PharmaVault</PageTitle>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">PharmaVault</h3>
+
+                    @if (!string.IsNullOrEmpty(ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ErrorMessage
+                        </div>
+                    }
+
+                    <EditForm Model="@LoginModel" OnValidSubmit="HandleLoginAsync" FormName="LoginForm">
+                        <DataAnnotationsValidator />
+
+                        <div class="form-floating mb-3">
+                            <InputText id="email" class="form-control"
+                                    @bind-Value="LoginModel.Email"
+                                    @bind-Value:event="oninput"
+                                    placeholder="Type your email" />
+                            <label for="email">Email</label>
+                            <ValidationMessage For="() => LoginModel.Email" class="text-danger small" />
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <InputText id="password" type="password" class="form-control"
+                                    @bind-Value="LoginModel.Password"
+                                    @bind-Value:event="oninput"
+                                    placeholder="Type your password" />
+                            <label for="password">Password</label>
+                            <ValidationMessage For="() => LoginModel.Password" class="text-danger small" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2">Log In</button>
+                    </EditForm>
+
+                    <div class="mt-4 text-center">
+                        <span>Don't have an account? <a href="/register"
+                                                            class="text-decoration-none">Register</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

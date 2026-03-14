@@ -1,0 +1,58 @@
+﻿@page "/register"
+@layout Layout.AuthLayout
+@rendermode InteractiveServer
+
+<PageTitle>Register - PharmaVault</PageTitle>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Create an Account</h3>
+
+                    @if (!string.IsNullOrEmpty(ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ErrorMessage
+                        </div>
+                    }
+
+                    <EditForm Model="@RegisterModel" OnValidSubmit="HandleRegisterAsync" FormName="RegisterForm">
+                        <DataAnnotationsValidator />
+
+                        <div class="form-floating mb-3">
+                            <InputText id="fullName" class="form-control"
+                                @bind-Value="RegisterModel.FullName"
+                                placeholder="Type your name" />
+                            <label for="fullName">Full Name</label>
+                            <ValidationMessage For="() => RegisterModel.FullName" class="text-danger small" />
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <InputText id="email" class="form-control"
+                                @bind-Value="RegisterModel.Email"
+                                placeholder="Type your email" />
+                            <label for="email">Email</label>
+                            <ValidationMessage For="() => RegisterModel.Email" class="text-danger small" />
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <InputText id="password" type="password" class="form-control"
+                                       @bind-Value="RegisterModel.Password"
+                                       placeholder="Type your password" />
+                            <label for="password">Password</label>
+                            <ValidationMessage For="() => RegisterModel.Password" class="text-danger small" />
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 py-2">Register</button>
+                    </EditForm>
+
+                    <div class="mt-4 text-center">
+                        <span>Already have an account? <a href="/" class="text-decoration-none">Log In</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,6 @@
+using PharmaVault.Core.Interfaces;
+using PharmaVault.Core.Services;
+using PharmaVault.Data.Persistence;
 using PharmaVault.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+//DAOs
+builder.Services.AddScoped<IUserDao, UserDao>();
+
+//Services
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
