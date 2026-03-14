@@ -1,5 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using PharmaVault.Core.Interfaces;
 
@@ -13,6 +16,9 @@ public partial class Login : ComponentBase
     [Inject] 
     public NavigationManager Navigation { get; set; } = default!;
 
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
+
     [SupplyParameterFromForm(FormName = "LoginForm")]
     public LoginViewModel LoginModel { get; set; } = new();
     public string? ErrorMessage { get; set; }
@@ -25,6 +31,18 @@ public partial class Login : ComponentBase
 
         if (user != null)
         {
+            var claims = new List<Claim>
+            {
+                new(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new(ClaimTypes.Name, user.FullName),
+                new(ClaimTypes.Email, user.Email)
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
             Navigation.NavigateTo("/dashboard");
         }
         else

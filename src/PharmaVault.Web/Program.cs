@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using PharmaVault.Core.Interfaces;
 using PharmaVault.Core.Services;
 using PharmaVault.Data.Persistence;
@@ -15,6 +17,16 @@ builder.Services.AddScoped<IUserDao, UserDao>();
 //Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+builder.Services.AddAuthentication()
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+    {
+        options.LoginPath = "/"; // If someone try to enter without cookie, go to login
+        options.Cookie.Name = "PharmaVaultSession";
+        options.ExpireTimeSpan = TimeSpan.FromHours(1); // Session time
+    });
+
+builder.Services.AddCascadingAuthenticationState();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,10 +39,20 @@ if (!app.Environment.IsDevelopment())
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseAntiforgery();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+// Endpoint to destroy cookie and redirect to login
+app.MapPost("/logout", async (HttpContext context) =>
+{
+    await context.SignOutAsync(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme);
+    return Results.Redirect("/");
+});
 
 app.Run();

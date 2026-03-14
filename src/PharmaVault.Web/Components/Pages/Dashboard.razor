@@ -1,11 +1,15 @@
 ﻿@page "/dashboard"
 
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize]
+
 <PageTitle>Dashboard - PharmaVault</PageTitle>
 
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-12">
-            <h1 class="display-5 fw-bold text-primary">Welcome to PharmaVault</h1>
+            <h1 class="display-5 fw-bold text-primary">Welcome to PharmaVault, @UserName</h1>
             <p class="lead text-muted">Today is @CurrentDate</p>
             <hr class="my-4" />
             
