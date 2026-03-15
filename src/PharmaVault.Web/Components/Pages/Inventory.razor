@@ -1,0 +1,130 @@
+﻿@page "/inventory"
+
+@using Microsoft.AspNetCore.Authorization
+@using PharmaVault.Core.Models
+
+@attribute [Authorize]
+@rendermode InteractiveServer
+
+
+<PageTitle>My Inventory</PageTitle>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-box-seam me-2"></i>My Inventory</h2>
+    <div class="d-flex gap-3">
+        <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search medicine..." 
+                   @bind="_searchTerm" @bind:event="oninput" />
+        </div>
+        
+        <button class="btn btn-primary text-nowrap" @onclick="PrepareForAdd">
+            <i class="bi bi-plus-circle me-1"></i> Add Stock
+        </button>
+    </div>
+</div>
+
+@if (_inventoryItems == null)
+{
+    <p><em>Loading your inventory...</em></p>
+}
+else if (!_inventoryItems.Any())
+{
+    <div class="alert alert-info">Your inventory is empty. Add some medicines to get started!</div>
+}
+else
+{
+    <table class="table table-hover shadow-sm bg-white rounded">
+        <thead class="table-dark">
+            <tr>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Expiration</th>
+                <th>Notes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in FilteredInventory)
+            {
+                <tr class="@(item.IsExpired ? "table-danger" : "")">
+                    <td class="align-middle">
+                        <strong>@item.MedicineName</strong> <br />
+                        <small class="text-muted">@item.PharmaceuticalForm @item.Dosage</small>
+                    </td>
+                    <td class="align-middle">@item.Quantity</td>
+                    <td class="align-middle">
+                        @item.ExpirationDate.ToShortDateString()
+                        @if (item.IsExpired)
+                        {
+                            <span class="badge bg-danger ms-2">Expired</span>
+                        }
+                    </td>
+                    <td class="align-middle">@item.PrescriptionNotes</td>
+                    <td class="align-middle">
+                        <button class="btn btn-sm btn-outline-primary me-2" @onclick="() => PrepareForEdit(item)">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteInventoryAsync(item.InventoryId)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (_showModal)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(_currentInventory.InventoryId == 0 ? "Add to Inventory" : "Edit Inventory")</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="_currentInventory" OnValidSubmit="SaveInventoryAsync">
+                        <DataAnnotationsValidator />
+
+                        <div class="mb-3">
+                            <label class="form-label">Medicine from Catalog</label>
+                            <InputSelect @bind-Value="_currentInventory.CatalogId" class="form-select">
+                                <option value="0">-- Select a Medicine --</option>
+                                @foreach (var cat in _catalogItems)
+                                {
+                                    <option value="@cat.CatalogId">@cat.Name (@cat.PharmaceuticalForm)</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage For="@(() => _currentInventory.CatalogId)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Quantity (Boxes/Units)</label>
+                            <InputNumber @bind-Value="_currentInventory.Quantity" class="form-control" />
+                            <ValidationMessage For="@(() => _currentInventory.Quantity)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Expiration Date</label>
+                            <InputDate @bind-Value="_currentInventory.ExpirationDate" class="form-control" />
+                            <ValidationMessage For="@(() => _currentInventory.ExpirationDate)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Notes (e.g., Take with food)</label>
+                            <InputTextArea @bind-Value="_currentInventory.PrescriptionNotes" class="form-control" />
+                            <ValidationMessage For="@(() => _currentInventory.PrescriptionNotes)" class="text-danger" />
+                        </div>
+
+                        <div class="text-end">
+                            <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save to Inventory</button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+}

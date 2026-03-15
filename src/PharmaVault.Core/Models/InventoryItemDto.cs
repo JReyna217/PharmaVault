@@ -3,25 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PharmaVault.Core.Models;
 
-public class Inventory
+public class InventoryItemDto
 {
     public int InventoryId { get; set; }
-    
-    public int UserId { get; set; }
-
-    [Range(1, int.MaxValue, ErrorMessage = "Please select a medicine from the catalog.")]
     public int CatalogId { get; set; }
-
-    [Range(1, 10000, ErrorMessage = "Quantity must be at least 1.")]
+    
+    public string MedicineName { get; set; } = string.Empty;
+    public string PharmaceuticalForm { get; set; } = string.Empty;
+    public string? Dosage { get; set; }
+    
     public int Quantity { get; set; }
-
     public DateTime? PurchaseDate { get; set; }
-
-    [Required(ErrorMessage = "The expiration date is required.")]
     public DateTime ExpirationDate { get; set; }
-
-    [StringLength(500, ErrorMessage = "Notes cannot exceed 500 characters.")]
     public string? PrescriptionNotes { get; set; }
-
     public DateTime DateAdded { get; set; }
+    public bool IsExpired => ExpirationDate < DateTime.Today;
 }
