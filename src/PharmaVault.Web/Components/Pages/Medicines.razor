@@ -1,0 +1,123 @@
+﻿@page "/medicines"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@rendermode InteractiveServer
+
+<PageTitle>Medicine Catalog - PharmaVault</PageTitle>
+
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary fw-bold">Medicine Catalog</h2>
+        <button class="btn btn-primary" @onclick="() => OpenModal()">
+            <i class="bi bi-plus-circle me-1"></i> Add Medicine
+        </button>
+    </div>
+
+    @if (_medicines == null)
+    {
+        <div class="text-center mt-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (!_medicines.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            No medicines found in the catalog. Click "Add Medicine" to create one.
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Form</th>
+                                <th>Dosage</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var med in _medicines)
+                            {
+                                <tr>
+                                    <td class="align-middle">@med.CatalogId</td>
+                                    <td class="align-middle fw-semibold">@med.Name</td>
+                                    <td class="align-middle">@med.PharmaceuticalForm</td>
+                                    <td class="align-middle">@med.Dosage</td>
+                                    <td class="align-middle">
+                                        @if (med.IsActive)
+                                        {
+                                            <span class="badge bg-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Inactive</span>
+                                        }
+                                    </td>
+                                    <td class="text-end align-middle">
+                                        <button class="btn btn-sm btn-outline-secondary me-2" @onclick="() => OpenModal(med)">
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-sm @(med.IsActive ? "btn-outline-danger" : "btn-outline-success")" 
+                                                @onclick="() => ToggleStatusAsync(med.CatalogId, med.IsActive)">
+                                            @(med.IsActive ? "Deactivate" : "Activate")
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (_showModal)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold">@(_isEditing ? "Edit Medicine" : "New Medicine")</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                
+                <EditForm Model="@_currentMedicine" OnValidSubmit="SaveMedicineAsync">
+                    <DataAnnotationsValidator />
+                    
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <InputText id="medName" class="form-control" @bind-Value="_currentMedicine.Name" placeholder="Type name" />
+                            <label for="medName">Medicine Name</label>
+                            <ValidationMessage For="() => _currentMedicine.Name" class="text-danger small" />
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <InputText id="medForm" class="form-control" @bind-Value="_currentMedicine.PharmaceuticalForm" placeholder="Type form" />
+                            <label for="medForm">Pharmaceutical Form</label>
+                            <ValidationMessage For="() => _currentMedicine.PharmaceuticalForm" class="text-danger small" />
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <InputText id="medDosage" class="form-control" @bind-Value="_currentMedicine.Dosage" placeholder="Type dosage" />
+                            <label for="medDosage">Dosage (Optional)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}

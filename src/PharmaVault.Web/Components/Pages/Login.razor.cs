@@ -10,18 +10,23 @@ namespace PharmaVault.Web.Components.Pages;
 
 public partial class Login : ComponentBase
 {
-    [Inject] 
+    [Inject]
     public IAuthService AuthService { get; set; } = default!;
 
-    [Inject] 
+    [Inject]
     public NavigationManager Navigation { get; set; } = default!;
 
     [CascadingParameter]
     public HttpContext? HttpContext { get; set; }
 
     [SupplyParameterFromForm(FormName = "LoginForm")]
-    public LoginViewModel LoginModel { get; set; } = new();
+    public LoginViewModel LoginModel { get; set; } = default!;
     public string? ErrorMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        LoginModel ??= new LoginViewModel();
+    }
 
     public async Task HandleLoginAsync()
     {
@@ -41,7 +46,10 @@ public partial class Login : ComponentBase
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            if (HttpContext != null)
+            {
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            }
 
             Navigation.NavigateTo("/dashboard");
         }

@@ -7,15 +7,20 @@ namespace PharmaVault.Web.Components.Pages;
 
 public partial class Register : ComponentBase
 {
-    [Inject] 
+    [Inject]
     public IAuthService AuthService { get; set; } = default!;
 
-    [Inject] 
+    [Inject]
     public NavigationManager Navigation { get; set; } = default!;
 
     [SupplyParameterFromForm(FormName = "RegisterForm")]
-    public RegisterViewModel RegisterModel { get; set; } = new();
+    public RegisterViewModel RegisterModel { get; set; } = default!;
     public string? ErrorMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        RegisterModel ??= new RegisterViewModel();
+    }
 
     public async Task HandleRegisterAsync()
     {
@@ -30,10 +35,10 @@ public partial class Register : ComponentBase
             };
 
             await AuthService.RegisterAsync(newUser, RegisterModel.Password);
-            
+
             Navigation.NavigateTo("/");
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             ErrorMessage = "An error occurred during registration. The email might already be in use.";
         }

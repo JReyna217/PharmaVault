@@ -13,6 +13,7 @@ builder.Services.AddRazorComponents()
 
 //DAOs
 builder.Services.AddScoped<IUserDao, UserDao>();
+builder.Services.AddScoped<IMedicineCatalogDao, MedicineCatalogDao>();
 
 //Services
 builder.Services.AddScoped<IAuthService, AuthService>();
