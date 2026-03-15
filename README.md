@@ -46,17 +46,19 @@ For security reasons, the database connection string is not tracked in source co
 
 Open your terminal, navigate to the Web project folder (`src/PharmaVault.Web`), and run the following commands:
 
-### 3.1 bash
+```bash
 ### Initialize user secrets for the project
 dotnet user-secrets init
 
 ### Set your PostgreSQL connection string
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=PharmaVaultDb;Username=your_user;Password=your_password"
-
+```
 ## 4. Run the Application
+```bash
 * dotnet build
 * dotnet run --project src/PharmaVault.Web
 * dotnet watch --project src/PharmaVault.Web (Hot Reload)
+```
 
 # 🗺️ Roadmap / Future Enhancements
 * [ ] Implement medicine consumption logging (subtract stock).
@@ -64,4 +66,4 @@ dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Da
 * [ ] Email notifications for expiring medications.
 
 # 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the Apache-2.0 license - see the LICENSE file for details.
