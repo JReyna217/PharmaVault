@@ -8,4 +8,5 @@ public interface IInventoryDao
     Task<int> AddToInventoryAsync(Inventory inventory);
     Task<bool> UpdateInventoryAsync(Inventory inventory);
     Task<bool> DeleteFromInventoryAsync(int inventoryId, int userId);
+    Task<DashboardStatsDto> GetDashboardStatsAsync(int userId);
 }

@@ -106,4 +106,26 @@ public class InventoryDao : IInventoryDao
         var rowsAffected = await cmd.ExecuteNonQueryAsync();
         return rowsAffected > 0;
     }
+
+    public async Task<DashboardStatsDto> GetDashboardStatsAsync(int userId)
+    {
+        await using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync();
+
+        var sql = @"
+            SELECT 
+                COALESCE(SUM(quantity), 0) AS TotalStock,
+                COALESCE(SUM(CASE WHEN expiration_date < CURRENT_DATE THEN quantity ELSE 0 END), 0) AS ExpiredStock,
+                COALESCE(SUM(CASE WHEN expiration_date >= CURRENT_DATE AND expiration_date <= CURRENT_DATE + INTERVAL '30 days' THEN quantity ELSE 0 END), 0) AS ExpiringSoonStock,
+                COALESCE(SUM(CASE WHEN expiration_date > CURRENT_DATE + INTERVAL '30 days' THEN quantity ELSE 0 END), 0) AS GoodStock
+            FROM inventory
+            WHERE user_id = @UserId;";
+
+        await using var cmd = new NpgsqlCommand(sql, connection);
+        cmd.Parameters.AddWithValue("UserId", userId);
+
+        var results = await cmd.FillToObjectListAsync<DashboardStatsDto>();
+        
+        return results.FirstOrDefault() ?? new DashboardStatsDto();
+    }
 }
