@@ -47,23 +47,68 @@ For security reasons, the database connection string is not tracked in source co
 Open your terminal, navigate to the Web project folder (`src/PharmaVault.Web`), and run the following commands:
 
 ```bash
-### Initialize user secrets for the project
+# Initialize user secrets for the project
 dotnet user-secrets init
 
-### Set your PostgreSQL connection string
+# Set your PostgreSQL connection string
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=PharmaVaultDb;Username=your_user;Password=your_password"
 ```
 ## 4. Run the Application
 ```bash
-* dotnet build
-* dotnet run --project src/PharmaVault.Web
-* dotnet watch --project src/PharmaVault.Web (Hot Reload)
+# Build the project
+dotnet build
+
+# Run the application
+dotnet run --project src/PharmaVault.Web
+
+# Or run with Hot Reload enabled
+dotnet watch --project src/PharmaVault.Web (Hot Reload)
 ```
 
-# 🗺️ Roadmap / Future Enhancements
+## 🗺️ Roadmap / Future Enhancements
 * [ ] Implement medicine consumption logging (subtract stock).
 * [ ] Export inventory reports to Excel/PDF.
 * [ ] Email notifications for expiring medications.
 
 # 📄 License
 This project is licensed under the Apache-2.0 license - see the LICENSE file for details.
+
+# 🌍 Production Deployment (Ubuntu + Docker + Nginx)
+This project is optimized for deployment on a Linux server using Docker for the application runtime and a native PostgreSQL installation.
+
+## 1. Clone the Repository on your Server
+SSH into your production server and clone the source code:
+```bash
+git clone https://github.com/JReyna217/PharmaVault.git
+cd PharmaVault
+```
+## 2. Build the Docker Image Locally
+To ensure the image is compiled for your server's specific CPU architecture (e.g., avoiding ARM vs x86_64 conflicts), build the image directly on the host:
+```bash
+docker build -t pharmavault-app:latest .
+```
+## 3. Run the Container
+Run the container in detached mode. We map the internal Blazor port (8080) to a local server port (e.g., 5010).
+
+_Note: The --add-host flag allows the isolated Docker container to communicate with the PostgreSQL database if is installed natively on the host machine._
+
+```bash
+docker run -d \
+  --name pharmavault-web \
+  --restart unless-stopped \
+  -p 5010:8080 \
+  --add-host=host.docker.internal:host-gateway \
+  -e "ConnectionStrings__DefaultConnection=Host=host.docker.internal;Database=PharmaVaultDb;Username=YOUR_DB_USER;Password=YOUR_DB_PASSWORD" \
+  pharmavault-app:latest
+```
+## 4. Configure Nginx as a Reverse Proxy
+To expose the application to the internet securely, use Nginx to proxy the traffic to port 5010.
+
+A template for the Nginx configuration can be found in the repository under /infrastructure/nginx/pharmavault.conf. This configuration includes the necessary headers to support Blazor Server's WebSockets (SignalR) and enforces HTTPS redirection.
+
+Enable the site and reload Nginx:
+```bash
+sudo ln -s /etc/nginx/sites-available/pharmavault /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
