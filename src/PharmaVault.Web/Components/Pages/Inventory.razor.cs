@@ -34,6 +34,8 @@ public partial class Inventory : ComponentBase
             _userId = parsedId;
         }
 
+        //var x = decimal.Divide(1,0);
+
         _catalogItems = await CatalogDao.GetAllAsync();
         await LoadInventoryAsync();
     }

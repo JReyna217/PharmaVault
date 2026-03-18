@@ -4,6 +4,7 @@ using PharmaVault.Core.Interfaces;
 using PharmaVault.Core.Services;
 using PharmaVault.Data.Persistence;
 using PharmaVault.Web.Components;
+using PharmaVault.Web.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddScoped<IUserDao, UserDao>();
 builder.Services.AddScoped<IMedicineCatalogDao, MedicineCatalogDao>();
 builder.Services.AddScoped<IInventoryDao, InventoryDao>();
+builder.Services.AddScoped<IErrorLogDao, ErrorLogDao>();
 
 //Services
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -40,6 +42,8 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();

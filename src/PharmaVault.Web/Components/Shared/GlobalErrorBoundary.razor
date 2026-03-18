@@ -1,0 +1,35 @@
+﻿@inherits ErrorBoundary
+
+@if (CurrentException is null)
+{
+    @ChildContent
+}
+else
+{
+    <div class="container mt-5">
+        <div class="alert alert-danger shadow border-0 border-start border-danger border-5 p-4" role="alert">
+            <h4 class="alert-heading fw-bold text-danger">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>Oops! Something went wrong.
+            </h4>
+            <p>An unexpected error occurred while processing your request. Our technical team has been notified.</p>
+            <hr class="border-danger opacity-25" />
+            
+            <div class="bg-light p-3 rounded text-dark font-monospace small mb-3 d-flex align-items-center">
+                <strong class="me-2">Incident ID:</strong>
+                @if (_incidentId == Guid.Empty)
+                {
+                    <div class="spinner-border spinner-border-sm text-danger" role="status"></div>
+                    <span class="ms-2 text-muted fst-italic">Generating report...</span>
+                }
+                else
+                {
+                    <span>@_incidentId</span>
+                }
+            </div>
+
+            <button class="btn btn-outline-danger fw-bold" @onclick="Recover">
+                <i class="bi bi-arrow-clockwise me-2"></i>Try Again
+            </button>
+        </div>
+    </div>
+}
