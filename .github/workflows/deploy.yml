@@ -3,6 +3,9 @@ name: Deploy PharmaVault
 on:
   push:
     branches: [ "main" ] # It will trigger the workflow on pushes to the main branch
+  pull_request:
+    branches: [ "main" ] # It will trigger the workflow on PRs to the main branch
+
 
 env:
   REGISTRY: ghcr.io
@@ -46,6 +49,7 @@ jobs:
 
   deploy:
     needs: build-and-push
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
