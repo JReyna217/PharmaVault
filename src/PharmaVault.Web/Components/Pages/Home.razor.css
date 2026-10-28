@@ -1,0 +1,66 @@
+.bg-gradient-hero {
+    background: linear-gradient(135deg, #f8faff 0%, #eef3fc 100%);
+}
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-preview-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-preview-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.feature-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border-color: #e9ecef !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem rgba(27, 110, 194, 0.08) !important;
+    border-color: #b9d5f5 !important;
+}
+
+.feature-icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.max-w-700 {
+    max-width: 700px;
+}
+
+.smaller {
+    font-size: 0.8125rem;
+}
+
+.fs-7 {
+    font-size: 0.85rem;
+}
+
+.tracking-wider {
+    letter-spacing: 0.08em;
+}
+
+.tracking-tight {
+    letter-spacing: -0.02em;
+}
+
+.text-hover-primary:hover {
+    color: #1b6ec2 !important;
+}
+
+.text-hover-white:hover {
+    color: #ffffff !important;
+}
+
+/* Scroll suave para navegación con anclas */
+html {
+    scroll-behavior: smooth;
+}

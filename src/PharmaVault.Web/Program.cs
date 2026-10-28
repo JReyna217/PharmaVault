@@ -24,7 +24,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddAuthentication()
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
-        options.LoginPath = "/"; // If someone try to enter without cookie, go to login
+        options.LoginPath = "/login"; // If someone try to enter without cookie, go to login
         options.Cookie.Name = "PharmaVaultSession";
         options.ExpireTimeSpan = TimeSpan.FromHours(1); // Session time
     });
@@ -58,7 +58,7 @@ app.MapRazorComponents<App>()
 app.MapPost("/logout", async (HttpContext context) =>
 {
     await context.SignOutAsync(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme);
-    return Results.Redirect("/");
+    return Results.Redirect("/login");
 });
 
 app.Run();

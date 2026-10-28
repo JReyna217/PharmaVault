@@ -36,7 +36,7 @@ public partial class Register : ComponentBase
 
             await AuthService.RegisterAsync(newUser, RegisterModel.Password);
 
-            Navigation.NavigateTo("/");
+            Navigation.NavigateTo("/login");
         }
         catch (Exception)
         {
