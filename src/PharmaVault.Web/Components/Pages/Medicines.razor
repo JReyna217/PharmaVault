@@ -1,15 +1,15 @@
-﻿@page "/medicines"
+@page "/medicines"
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 @rendermode InteractiveServer
 
-<PageTitle>Medicine Catalog - PharmaVault</PageTitle>
+<PageTitle>@Loc["Catalog_Title"] - PharmaVault</PageTitle>
 
 <div class="container-fluid mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-primary fw-bold">Medicine Catalog</h2>
+        <h2 class="text-primary fw-bold">@Loc["Catalog_Title"]</h2>
         <button class="btn btn-primary" @onclick="() => OpenModal()">
-            <i class="bi bi-plus-circle me-1"></i> Add Medicine
+            <i class="bi bi-plus-circle me-1"></i> @Loc["Catalog_AddBtn"]
         </button>
     </div>
 
@@ -17,14 +17,14 @@
     {
         <div class="text-center mt-5">
             <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+                <span class="visually-hidden">@Loc["Catalog_Loading"]</span>
             </div>
         </div>
     }
     else if (!_medicines.Any())
     {
         <div class="alert alert-warning" role="alert">
-            No medicines found in the catalog. Click "Add Medicine" to create one.
+            @Loc["Catalog_Empty"]
         </div>
     }
     else
@@ -35,12 +35,12 @@
                     <table class="table table-hover table-striped mb-0">
                         <thead class="table-dark">
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Form</th>
-                                <th>Dosage</th>
-                                <th>Status</th>
-                                <th class="text-end">Actions</th>
+                                <th>@Loc["Catalog_Th_ID"]</th>
+                                <th>@Loc["Catalog_Th_Name"]</th>
+                                <th>@Loc["Catalog_Th_Form"]</th>
+                                <th>@Loc["Catalog_Th_Dosage"]</th>
+                                <th>@Loc["Catalog_Th_Status"]</th>
+                                <th class="text-end">@Loc["Catalog_Th_Actions"]</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,20 +54,20 @@
                                     <td class="align-middle">
                                         @if (med.IsActive)
                                         {
-                                            <span class="badge bg-success">Active</span>
+                                            <span class="badge bg-success">@Loc["Catalog_Active"]</span>
                                         }
                                         else
                                         {
-                                            <span class="badge bg-danger">Inactive</span>
+                                            <span class="badge bg-danger">@Loc["Catalog_Inactive"]</span>
                                         }
                                     </td>
                                     <td class="text-end align-middle">
                                         <button class="btn btn-sm btn-outline-secondary me-2" @onclick="() => OpenModal(med)">
-                                            Edit
+                                            @Loc["Catalog_Edit"]
                                         </button>
                                         <button class="btn btn-sm @(med.IsActive ? "btn-outline-danger" : "btn-outline-success")" 
                                                 @onclick="() => ToggleStatusAsync(med.CatalogId, med.IsActive)">
-                                            @(med.IsActive ? "Deactivate" : "Activate")
+                                            @(med.IsActive ? Loc["Catalog_Inactive"] : Loc["Catalog_Active"])
                                         </button>
                                     </td>
                                 </tr>
@@ -86,7 +86,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-light">
-                    <h5 class="modal-title fw-bold">@(_isEditing ? "Edit Medicine" : "New Medicine")</h5>
+                    <h5 class="modal-title fw-bold">@(_isEditing ? Loc["Catalog_Modal_Edit"] : Loc["Catalog_Modal_New"])</h5>
                     <button type="button" class="btn-close" @onclick="CloseModal"></button>
                 </div>
                 
@@ -95,26 +95,26 @@
                     
                     <div class="modal-body">
                         <div class="form-floating mb-3">
-                            <InputText id="medName" class="form-control" @bind-Value="_currentMedicine.Name" placeholder="Type name" />
-                            <label for="medName">Medicine Name</label>
+                            <InputText id="medName" class="form-control" @bind-Value="_currentMedicine.Name" placeholder="@Loc["Catalog_Th_Name"]" />
+                            <label for="medName">@Loc["Catalog_Th_Name"]</label>
                             <ValidationMessage For="() => _currentMedicine.Name" class="text-danger small" />
                         </div>
                         
                         <div class="form-floating mb-3">
-                            <InputText id="medForm" class="form-control" @bind-Value="_currentMedicine.PharmaceuticalForm" placeholder="Type form" />
-                            <label for="medForm">Pharmaceutical Form</label>
+                            <InputText id="medForm" class="form-control" @bind-Value="_currentMedicine.PharmaceuticalForm" placeholder="@Loc["Catalog_Th_Form"]" />
+                            <label for="medForm">@Loc["Catalog_Th_Form"]</label>
                             <ValidationMessage For="() => _currentMedicine.PharmaceuticalForm" class="text-danger small" />
                         </div>
                         
                         <div class="form-floating mb-3">
-                            <InputText id="medDosage" class="form-control" @bind-Value="_currentMedicine.Dosage" placeholder="Type dosage" />
-                            <label for="medDosage">Dosage (Optional)</label>
+                            <InputText id="medDosage" class="form-control" @bind-Value="_currentMedicine.Dosage" placeholder="@Loc["Catalog_Th_Dosage"]" />
+                            <label for="medDosage">@Loc["Catalog_Th_Dosage"]</label>
                         </div>
                     </div>
                     
                     <div class="modal-footer bg-light">
-                        <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" @onclick="CloseModal">@Loc["Catalog_Cancel"]</button>
+                        <button type="submit" class="btn btn-primary">@Loc["Catalog_Save"]</button>
                     </div>
                 </EditForm>
             </div>

@@ -1,0 +1,50 @@
+@using System.Globalization
+@inject NavigationManager Navigation
+@inject CultureStateService CultureState
+
+<div class="language-selector-wrapper d-inline-flex align-items-center gap-1" data-enhance-nav="false">
+    <span class="text-secondary small d-none d-sm-inline-flex align-items-center" title="Language / Idioma">
+        <i class="bi bi-translate fs-6 text-primary"></i>
+    </span>
+    
+    <div class="btn-group btn-group-sm rounded-pill p-1 bg-light border shadow-none" role="group" aria-label="Language Selector" data-enhance-nav="false">
+        <a href="@GetCultureUrl("es-MX")" 
+           data-enhance-nav="false"
+           @onclick='() => ChangeLanguage("es-MX")'
+           class="btn btn-sm rounded-pill px-2 py-0 fw-semibold text-decoration-none @(CultureState.IsSpanish ? "btn-primary text-white" : "btn-light text-muted border-0")" 
+           title="Español (México)">
+            ES
+        </a>
+        <a href="@GetCultureUrl("en-US")" 
+           data-enhance-nav="false"
+           @onclick='() => ChangeLanguage("en-US")'
+           class="btn btn-sm rounded-pill px-2 py-0 fw-semibold text-decoration-none @(!CultureState.IsSpanish ? "btn-primary text-white" : "btn-light text-muted border-0")" 
+           title="English (US)">
+            EN
+        </a>
+    </div>
+</div>
+
+@code {
+    private void ChangeLanguage(string cultureCode)
+    {
+        bool targetIsSpanish = cultureCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
+        if (targetIsSpanish == CultureState.IsSpanish)
+        {
+            return;
+        }
+
+        var endpoint = GetCultureUrl(cultureCode);
+        Navigation.NavigateTo(endpoint, forceLoad: true);
+    }
+
+    private string GetCultureUrl(string cultureCode)
+    {
+        var uri = new Uri(Navigation.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        if (string.IsNullOrEmpty(uri) || !uri.StartsWith("/"))
+        {
+            uri = "/" + (uri ?? "").TrimStart('/');
+        }
+        return $"/culture/set?culture={Uri.EscapeDataString(cultureCode)}&redirectUri={Uri.EscapeDataString(uri)}";
+    }
+}

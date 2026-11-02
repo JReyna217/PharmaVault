@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Components;
 using PharmaVault.Core.Interfaces;
 using PharmaVault.Core.Models;
+using PharmaVault.Web;
 
 namespace PharmaVault.Web.Components.Pages;
 
@@ -46,15 +47,16 @@ public partial class Register : ComponentBase
 
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Full Name is required.")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_NameRequired")]
+        [StringLength(80, MinimumLength = 2, ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_NameLength")]
         public string FullName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email format.")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_EmailRequired")]
+        [EmailAddress(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_EmailInvalid")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Password is required.")]
-        [MinLength(6, ErrorMessage = "Password must be at least 6 characters long.")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_PasswordRequired")]
+        [MinLength(6, ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_PasswordMinLength")]
         public string Password { get; set; } = string.Empty;
     }
 }

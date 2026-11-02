@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Nav_Features" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="Nav_Catalog" xml:space="preserve">
+    <value>Catalog</value>
+  </data>
+  <data name="Nav_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="Nav_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Nav_Login" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Nav_Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Go to Dashboard</value>
+  </data>
+  <data name="Nav_Logout" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="Lang_ES" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="Lang_EN" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Lang_Select" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Hero_Badge" xml:space="preserve">
+    <value>Pharmaceutical Control &amp; Safety</value>
+  </data>
+  <data name="Hero_Title_Prefix" xml:space="preserve">
+    <value>The ultimate control for your </value>
+  </data>
+  <data name="Hero_Title_Highlight" xml:space="preserve">
+    <value>medical cabinet</value>
+  </data>
+  <data name="Hero_Title_Suffix" xml:space="preserve">
+    <value> at home.</value>
+  </data>
+  <data name="Hero_Subtitle" xml:space="preserve">
+    <value>PharmaVault eliminates the disorder and health hazards of expired medicines. Monitor stock health with proactive visual alerts, maintain a centralized catalog of dosages and forms, and avoid unnecessary duplicate purchases.</value>
+  </data>
+  <data name="Hero_Cta_Start" xml:space="preserve">
+    <value>Get Started for Free</value>
+  </data>
+  <data name="Hero_Cta_Login" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Hero_Trust_ZeroExpired" xml:space="preserve">
+    <value>Zero expired medications</value>
+  </data>
+  <data name="Hero_Trust_Private" xml:space="preserve">
+    <value>100% private and secure</value>
+  </data>
+  <data name="Hero_Trust_AnyDevice" xml:space="preserve">
+    <value>Accessible from any device</value>
+  </data>
+  <data name="Hero_Card_Title" xml:space="preserve">
+    <value>Cabinet Health</value>
+  </data>
+  <data name="Hero_Card_Realtime" xml:space="preserve">
+    <value>Real time</value>
+  </data>
+  <data name="Hero_Card_GoodCondition" xml:space="preserve">
+    <value>Good Condition</value>
+  </data>
+  <data name="Hero_Card_ExpiringSoon" xml:space="preserve">
+    <value>Expiring Soon</value>
+  </data>
+  <data name="Hero_Card_Expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Hero_Card_BlazorBanner" xml:space="preserve">
+    <value>Blazor Interactive Server in real-time</value>
+  </data>
+  <data name="Hero_Status_Valid" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="Hero_Status_ExpiringDays" xml:space="preserve">
+    <value>Expiring ({0} d)</value>
+  </data>
+  <data name="Hero_Status_Expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Features_Badge" xml:space="preserve">
+    <value>Platform Capabilities</value>
+  </data>
+  <data name="Features_Title" xml:space="preserve">
+    <value>Designed to simplify pharmaceutical management</value>
+  </data>
+  <data name="Features_Subtitle" xml:space="preserve">
+    <value>PharmaVault combines modern .NET 10 technology with a human-centered approach focused on home safety and simplicity.</value>
+  </data>
+  <data name="Feature_Expirations_Title" xml:space="preserve">
+    <value>Expiration Control &amp; Early Alerts</value>
+  </data>
+  <data name="Feature_Expirations_Desc" xml:space="preserve">
+    <value>Instant 3-tier visual categorization: Good Condition, Expiring Soon, and Expired. Never discard usable medicine or risk taking outdated drugs.</value>
+  </data>
+  <data name="Feature_Catalog_Title" xml:space="preserve">
+    <value>Centralized Master Catalog</value>
+  </data>
+  <data name="Feature_Catalog_Desc" xml:space="preserve">
+    <value>Standardized medicine repository covering commercial and generic names, pharmaceutical presentations (capsules, tablets, syrups, injections), and exact strengths.</value>
+  </data>
+  <data name="Feature_Inventory_Title" xml:space="preserve">
+    <value>Personalized Inventory CRUD</value>
+  </data>
+  <data name="Feature_Inventory_Desc" xml:space="preserve">
+    <value>Add, update, and remove medicine stock in real-time. Link every batch to your authenticated account with purchase dates, expiration dates, and precise counts.</value>
+  </data>
+  <data name="Feature_Search_Title" xml:space="preserve">
+    <value>Zero-Latency Reactive Search</value>
+  </data>
+  <data name="Feature_Search_Desc" xml:space="preserve">
+    <value>Ultra-fast in-memory LINQ filtering powered by Blazor Interactive Server. Find any medication instantly without page reloads.</value>
+  </data>
+  <data name="Feature_Analytics_Title" xml:space="preserve">
+    <value>Visual Analytics &amp; Donut Charts</value>
+  </data>
+  <data name="Feature_Analytics_Desc" xml:space="preserve">
+    <value>Real-time visual dashboards driven by Blazor-ApexCharts providing an at-a-glance health summary of your family medical supply.</value>
+  </data>
+  <data name="Feature_Security_Title" xml:space="preserve">
+    <value>Cryptographic-Grade Privacy</value>
+  </data>
+  <data name="Feature_Security_Desc" xml:space="preserve">
+    <value>Passwords hashed with the BCrypt algorithm, secure cookie-based session tokens, and strict multi-tenant persistence on PostgreSQL.</value>
+  </data>
+  <data name="Catalog_Module_Badge" xml:space="preserve">
+    <value>Core Module</value>
+  </data>
+  <data name="Catalog_Module_Title" xml:space="preserve">
+    <value>Master Medicine Catalog</value>
+  </data>
+  <data name="Catalog_Module_Desc" xml:space="preserve">
+    <value>Eliminate dosage and format confusion. The master catalog standardizes pharmaceutical items by common name, dosage, and form so any family member can identify them accurately.</value>
+  </data>
+  <data name="Catalog_Module_Pill1" xml:space="preserve">
+    <value>Supports tablets, syrups, injections, solutions, and ointments.</value>
+  </data>
+  <data name="Catalog_Module_Pill2" xml:space="preserve">
+    <value>Reusable master entries for multiple personal inventory records.</value>
+  </data>
+  <data name="Catalog_Module_Pill3" xml:space="preserve">
+    <value>Instant search and filtering by brand or active ingredient.</value>
+  </data>
+  <data name="Catalog_Module_Btn" xml:space="preserve">
+    <value>Explore Catalog</value>
+  </data>
+  <data name="Catalog_Table_Medicine" xml:space="preserve">
+    <value>Medicine</value>
+  </data>
+  <data name="Catalog_Table_Form" xml:space="preserve">
+    <value>Form</value>
+  </data>
+  <data name="Catalog_Table_Dosage" xml:space="preserve">
+    <value>Dosage</value>
+  </data>
+  <data name="Catalog_Table_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Catalog_Table_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Inventory_Module_Badge" xml:space="preserve">
+    <value>Stock Management</value>
+  </data>
+  <data name="Inventory_Module_Title" xml:space="preserve">
+    <value>Smart Inventory &amp; Expiration Alerts</value>
+  </data>
+  <data name="Inventory_Module_Desc" xml:space="preserve">
+    <value>Make informed decisions before heading to the pharmacy. Your inventory tracks accurate counts and alerts you before medications expire, saving money on duplicate purchases.</value>
+  </data>
+  <data name="Inventory_Module_Stat1_Value" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="Inventory_Module_Stat1_Label" xml:space="preserve">
+    <value>Unnecessary duplicate purchases</value>
+  </data>
+  <data name="Inventory_Module_Stat2_Value" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="Inventory_Module_Stat2_Label" xml:space="preserve">
+    <value>Peace of mind for your family health</value>
+  </data>
+  <data name="Inventory_Module_Btn" xml:space="preserve">
+    <value>Go to My Inventory</value>
+  </data>
+  <data name="Inventory_Card_Title" xml:space="preserve">
+    <value>Stock &amp; Expirations</value>
+  </data>
+  <data name="Inventory_Card_Badge" xml:space="preserve">
+    <value>Active Tracking</value>
+  </data>
+  <data name="Inventory_Alert_Title" xml:space="preserve">
+    <value>Early Warning</value>
+  </data>
+  <data name="Inventory_Alert_Desc" xml:space="preserve">
+    <value>You have medications expiring within the next 30 days. Remember to refill or dispose of them safely.</value>
+  </data>
+  <data name="Inventory_Status_Expiring" xml:space="preserve">
+    <value>Expiring soon</value>
+  </data>
+  <data name="Inventory_Status_Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="Contact_Badge" xml:space="preserve">
+    <value>Support &amp; Inquiries</value>
+  </data>
+  <data name="Contact_Title" xml:space="preserve">
+    <value>Have questions or feedback?</value>
+  </data>
+  <data name="Contact_Subtitle" xml:space="preserve">
+    <value>Our team is here to assist you in getting the most out of PharmaVault for your household or institution.</value>
+  </data>
+  <data name="Contact_Form_Header" xml:space="preserve">
+    <value>Send us a message</value>
+  </data>
+  <data name="Contact_Success_Title" xml:space="preserve">
+    <value>Message successfully received!</value>
+  </data>
+  <data name="Contact_Success_Desc" xml:space="preserve">
+    <value>Thank you for reaching out. Our support team will get back to you shortly.</value>
+  </data>
+  <data name="Contact_Field_Name" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="Contact_Field_Email" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Contact_Field_Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Contact_Field_Message" xml:space="preserve">
+    <value>Detailed message</value>
+  </data>
+  <data name="Contact_Btn_Send" xml:space="preserve">
+    <value>Send Inquiry</value>
+  </data>
+  <data name="Contact_Btn_Sending" xml:space="preserve">
+    <value>Sending message...</value>
+  </data>
+  <data name="Contact_Support_Header" xml:space="preserve">
+    <value>Support Information</value>
+  </data>
+  <data name="Contact_Support_Desc" xml:space="preserve">
+    <value>We are dedicated to providing the safest and most reliable experience for family health management.</value>
+  </data>
+  <data name="Contact_Support_EmailLabel" xml:space="preserve">
+    <value>Support Email</value>
+  </data>
+  <data name="Contact_Support_HoursLabel" xml:space="preserve">
+    <value>Service Hours</value>
+  </data>
+  <data name="Contact_Support_HoursValue" xml:space="preserve">
+    <value>Monday to Friday • 9:00 AM - 6:00 PM</value>
+  </data>
+  <data name="Contact_Support_PrivacyLabel" xml:space="preserve">
+    <value>Privacy Commitment</value>
+  </data>
+  <data name="Contact_Support_PrivacyValue" xml:space="preserve">
+    <value>Your medical and personal data is never shared with third parties or monetized.</value>
+  </data>
+  <data name="Contact_Ready_Title" xml:space="preserve">
+    <value>Ready to get started?</value>
+  </data>
+  <data name="Contact_Ready_Desc" xml:space="preserve">
+    <value>Create your account in less than a minute and start tracking your medication stock today.</value>
+  </data>
+  <data name="Contact_Ready_Btn" xml:space="preserve">
+    <value>Create free account</value>
+  </data>
+  <data name="Footer_Tagline" xml:space="preserve">
+    <value>Comprehensive and secure personal &amp; family pharmaceutical inventory management. Track expiration dates, reduce medical waste, and keep your supplies organized.</value>
+  </data>
+  <data name="Footer_Explore_Title" xml:space="preserve">
+    <value>Explore</value>
+  </data>
+  <data name="Footer_Access_Title" xml:space="preserve">
+    <value>Platform Access</value>
+  </data>
+  <data name="Footer_Security_Title" xml:space="preserve">
+    <value>Security &amp; Trust</value>
+  </data>
+  <data name="Footer_Security_Desc" xml:space="preserve">
+    <value>Your health data is strictly private. Every user account is cryptographically isolated and authenticated.</value>
+  </data>
+  <data name="Footer_Encryption_Badge" xml:space="preserve">
+    <value>BCrypt Encryption &amp; Secure Cookie</value>
+  </data>
+  <data name="Footer_Rights" xml:space="preserve">
+    <value>All rights reserved.</value>
+  </data>
+  <data name="Footer_BackToTop" xml:space="preserve">
+    <value>Back to top</value>
+  </data>
+  <data name="Login_Title" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Login_EmailLabel" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Login_EmailPlaceholder" xml:space="preserve">
+    <value>Type your email</value>
+  </data>
+  <data name="Login_PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Login_PasswordPlaceholder" xml:space="preserve">
+    <value>Type your password</value>
+  </data>
+  <data name="Login_Btn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Login_NoAccount" xml:space="preserve">
+    <value>Don't have an account?</value>
+  </data>
+  <data name="Login_RegisterPrompt" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Login_InvalidCredentials" xml:space="preserve">
+    <value>Invalid email or password.</value>
+  </data>
+  <data name="Register_Title" xml:space="preserve">
+    <value>Create an Account</value>
+  </data>
+  <data name="Register_FullNameLabel" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Register_FullNamePlaceholder" xml:space="preserve">
+    <value>Type your name</value>
+  </data>
+  <data name="Register_Btn" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_HaveAccount" xml:space="preserve">
+    <value>Already have an account?</value>
+  </data>
+  <data name="Register_LoginPrompt" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Validation_NameRequired" xml:space="preserve">
+    <value>Full Name is required.</value>
+  </data>
+  <data name="Validation_NameLength" xml:space="preserve">
+    <value>Name must be between 2 and 80 characters.</value>
+  </data>
+  <data name="Validation_EmailRequired" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="Validation_EmailInvalid" xml:space="preserve">
+    <value>Invalid email format.</value>
+  </data>
+  <data name="Validation_SubjectRequired" xml:space="preserve">
+    <value>Subject is required.</value>
+  </data>
+  <data name="Validation_SubjectLength" xml:space="preserve">
+    <value>Subject must be between 3 and 120 characters.</value>
+  </data>
+  <data name="Validation_MessageRequired" xml:space="preserve">
+    <value>Message is required.</value>
+  </data>
+  <data name="Validation_MessageLength" xml:space="preserve">
+    <value>Message must be at least 10 characters long.</value>
+  </data>
+  <data name="Validation_PasswordRequired" xml:space="preserve">
+    <value>Password is required.</value>
+  </data>
+  <data name="Validation_PasswordMinLength" xml:space="preserve">
+    <value>Password must be at least 6 characters long.</value>
+  </data>
+  <data name="Menu_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Menu_Catalog" xml:space="preserve">
+    <value>Catalog</value>
+  </data>
+  <data name="Menu_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="App_Logout" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="Dashboard_Title" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Dashboard_Welcome" xml:space="preserve">
+    <value>Welcome to PharmaVault, {0}!</value>
+  </data>
+  <data name="Dashboard_Today" xml:space="preserve">
+    <value>Today is {0}</value>
+  </data>
+  <data name="Dashboard_Loading" xml:space="preserve">
+    <value>Loading your statistics...</value>
+  </data>
+  <data name="Dashboard_NoStockTitle" xml:space="preserve">
+    <value>No stock registered yet!</value>
+  </data>
+  <data name="Dashboard_NoStockDesc" xml:space="preserve">
+    <value>Your inventory is currently empty. Head over to the Inventory section to start adding your first medicines.</value>
+  </data>
+  <data name="Dashboard_TotalUnits" xml:space="preserve">
+    <value>Total Units</value>
+  </data>
+  <data name="Dashboard_GoodCondition" xml:space="preserve">
+    <value>Good Condition</value>
+  </data>
+  <data name="Dashboard_ExpiringSoon" xml:space="preserve">
+    <value>Expiring Soon</value>
+  </data>
+  <data name="Dashboard_Expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Dashboard_ChartTitle" xml:space="preserve">
+    <value>Cabinet Health Composition</value>
+  </data>
+  <data name="Catalog_Title" xml:space="preserve">
+    <value>Medicine Catalog</value>
+  </data>
+  <data name="Catalog_AddBtn" xml:space="preserve">
+    <value>Add Medicine</value>
+  </data>
+  <data name="Catalog_Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Catalog_Empty" xml:space="preserve">
+    <value>No medicines found in the catalog. Click Add Medicine to create one.</value>
+  </data>
+  <data name="Catalog_Th_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Catalog_Th_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Catalog_Th_Form" xml:space="preserve">
+    <value>Form</value>
+  </data>
+  <data name="Catalog_Th_Dosage" xml:space="preserve">
+    <value>Dosage</value>
+  </data>
+  <data name="Catalog_Th_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Catalog_Th_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Catalog_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Catalog_Inactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="Catalog_Modal_New" xml:space="preserve">
+    <value>New Medicine</value>
+  </data>
+  <data name="Catalog_Modal_Edit" xml:space="preserve">
+    <value>Edit Medicine</value>
+  </data>
+  <data name="Catalog_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Catalog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Inventory_Title" xml:space="preserve">
+    <value>My Inventory</value>
+  </data>
+  <data name="Inventory_Search_Placeholder" xml:space="preserve">
+    <value>Search medicine...</value>
+  </data>
+  <data name="Inventory_AddBtn" xml:space="preserve">
+    <value>Add Stock</value>
+  </data>
+  <data name="Inventory_Loading" xml:space="preserve">
+    <value>Loading your inventory...</value>
+  </data>
+  <data name="Inventory_Empty" xml:space="preserve">
+    <value>Your inventory is empty. Add some medicines to get started!</value>
+  </data>
+  <data name="Inventory_Th_Medicine" xml:space="preserve">
+    <value>Medicine</value>
+  </data>
+  <data name="Inventory_Th_Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Inventory_Th_Expiration" xml:space="preserve">
+    <value>Expiration</value>
+  </data>
+  <data name="Inventory_Th_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Inventory_Th_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Inventory_Badge_Expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Inventory_Modal_Add" xml:space="preserve">
+    <value>Add Stock to Inventory</value>
+  </data>
+  <data name="Inventory_Modal_Edit" xml:space="preserve">
+    <value>Edit Inventory Stock</value>
+  </data>
+  <data name="Inventory_Form_Medicine" xml:space="preserve">
+    <value>Medicine</value>
+  </data>
+  <data name="Inventory_Form_SelectMedicine" xml:space="preserve">
+    <value>Select a medicine...</value>
+  </data>
+  <data name="Inventory_Form_Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Inventory_Form_Expiration" xml:space="preserve">
+    <value>Expiration Date</value>
+  </data>
+  <data name="Inventory_Form_Notes" xml:space="preserve">
+    <value>Prescription Notes</value>
+  </data>
+  <data name="Inventory_Form_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Inventory_Form_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Error_Unhandled" xml:space="preserve">
+    <value>An unhandled error has occurred.</value>
+  </data>
+  <data name="Error_Reload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+</root>

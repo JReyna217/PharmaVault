@@ -1,15 +1,25 @@
-﻿@page "/login"
+@page "/login"
 @layout Layout.AuthLayout
 
-
-<PageTitle>Login - PharmaVault</PageTitle>
+<PageTitle>@Loc["Login_Title"] - PharmaVault</PageTitle>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
+            <div class="d-flex justify-content-end mb-2">
+                <LanguageSelector />
+            </div>
+
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h3 class="card-title text-center mb-4">PharmaVault</h3>
+                    <div class="text-center mb-4">
+                        <a href="/" class="text-decoration-none">
+                            <span class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-circle p-2 mb-2">
+                                <i class="bi bi-capsule fs-3"></i>
+                            </span>
+                            <h3 class="card-title fw-bold text-dark m-0">Pharma<span class="text-primary">Vault</span></h3>
+                        </a>
+                    </div>
 
                     @if (!string.IsNullOrEmpty(ErrorMessage))
                     {
@@ -25,8 +35,8 @@
                             <InputText id="email" class="form-control"
                                     @bind-Value="LoginModel.Email"
                                     @bind-Value:event="oninput"
-                                    placeholder="Type your email" />
-                            <label for="email">Email</label>
+                                    placeholder="@Loc["Login_EmailPlaceholder"]" />
+                            <label for="email">@Loc["Login_EmailLabel"]</label>
                             <ValidationMessage For="() => LoginModel.Email" class="text-danger small" />
                         </div>
 
@@ -34,20 +44,19 @@
                             <InputText id="password" type="password" class="form-control"
                                     @bind-Value="LoginModel.Password"
                                     @bind-Value:event="oninput"
-                                    placeholder="Type your password" />
-                            <label for="password">Password</label>
+                                    placeholder="@Loc["Login_PasswordPlaceholder"]" />
+                            <label for="password">@Loc["Login_PasswordLabel"]</label>
                             <ValidationMessage For="() => LoginModel.Password" class="text-danger small" />
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 py-2">Log In</button>
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm">@Loc["Login_Btn"]</button>
                     </EditForm>
 
                     <div class="mt-4 text-center">
-                        <span>Don't have an account? <a href="/register"
-                                                            class="text-decoration-none">Register</a></span>
-                        </div>
+                        <span class="text-muted small">@Loc["Login_NoAccount"] <a href="/register" class="text-decoration-none fw-semibold">@Loc["Login_RegisterPrompt"]</a></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
