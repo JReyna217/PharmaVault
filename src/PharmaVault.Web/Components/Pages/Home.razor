@@ -1,7 +1,409 @@
-﻿@page "/home"
+@page "/"
+@page "/home"
+@layout Layout.LandingLayout
+@rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<PageTitle>PharmaVault - @Loc["Hero_Title_Prefix"]@Loc["Hero_Title_Highlight"]@Loc["Hero_Title_Suffix"]</PageTitle>
 
-<h1>Hello, world!</h1>
+<!-- ========================================================================= -->
+<!-- 1. HERO SECTION                                                           -->
+<!-- ========================================================================= -->
+<section class="hero-section py-5 bg-gradient-hero border-bottom">
+    <div class="container py-lg-4">
+        <div class="row align-items-center g-5">
+            <!-- Columna Izquierda: Mensaje de Valor y Llamados a la Acción -->
+            <div class="col-lg-7 text-center text-lg-start">
+                <div class="d-inline-flex align-items-center gap-2 bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-3 small fw-semibold">
+                    <i class="bi bi-shield-check"></i> @Loc["Hero_Badge"]
+                </div>
 
-Welcome to your new app.
+                <h1 class="display-4 fw-bold text-dark lh-sm mb-3">
+                    @Loc["Hero_Title_Prefix"]<span class="text-primary">@Loc["Hero_Title_Highlight"]</span>@Loc["Hero_Title_Suffix"]
+                </h1>
+
+                <p class="lead text-muted mb-4 fs-5">
+                    @Loc["Hero_Subtitle"]
+                </p>
+
+                <!-- Botones de Acción (CTAs) -->
+                <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3 mb-4">
+                    <a href="/register" class="btn btn-primary btn-lg px-4 py-3 fw-semibold shadow-sm d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-box-arrow-in-right fs-5"></i>
+                        <span>@Loc["Hero_Cta_Start"]</span>
+                    </a>
+                    <a href="/login" class="btn btn-outline-primary btn-lg px-4 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-person-check fs-5"></i>
+                        <span>@Loc["Hero_Cta_Login"]</span>
+                    </a>
+                </div>
+
+                <!-- Insignias de Confianza -->
+                <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 text-secondary small">
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <span>@Loc["Hero_Trust_ZeroExpired"]</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <span>@Loc["Hero_Trust_Private"]</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <span>@Loc["Hero_Trust_AnyDevice"]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Vista Previa Simulada del Dashboard y Medicamentos -->
+            <div class="col-lg-5">
+                <div class="hero-preview-card card border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-heart-pulse-fill"></i>
+                            <span class="fw-bold">@Loc["Hero_Card_Title"]</span>
+                        </div>
+                        <span class="badge bg-white text-primary rounded-pill px-2 py-1">@Loc["Hero_Card_Realtime"]</span>
+                    </div>
+
+                    <div class="card-body p-4 bg-light">
+                        <!-- Métricas Rápidas de Semáforo -->
+                        <div class="row g-2 mb-3 text-center">
+                            <div class="col-4">
+                                <div class="bg-success bg-opacity-10 text-success p-2 rounded-3 border border-success border-opacity-25">
+                                    <div class="fw-bold fs-5">24</div>
+                                    <div class="small fw-semibold">@Loc["Hero_Card_GoodCondition"]</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="bg-warning bg-opacity-10 text-warning-emphasis p-2 rounded-3 border border-warning border-opacity-25">
+                                    <div class="fw-bold fs-5">3</div>
+                                    <div class="small fw-semibold">@Loc["Hero_Card_ExpiringSoon"]</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="bg-danger bg-opacity-10 text-danger p-2 rounded-3 border border-danger border-opacity-25">
+                                    <div class="fw-bold fs-5">1</div>
+                                    <div class="small fw-semibold">@Loc["Hero_Card_Expired"]</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lista de Medicamentos de Demostración -->
+                        <div class="d-flex flex-column gap-2">
+                            <!-- Ítem 1: Vigente -->
+                            <div class="p-2 bg-white rounded-3 shadow-sm border d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-primary-subtle text-primary p-2 rounded-circle">
+                                        <i class="bi bi-capsule"></i>
+                                    </span>
+                                    <div>
+                                        <div class="fw-bold text-dark small">Paracetamol</div>
+                                        <div class="text-muted smaller">500mg &bull; Tabletas &bull; 20 uds</div>
+                                    </div>
+                                </div>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">
+                                    <i class="bi bi-check2"></i> @Loc["Hero_Status_Valid"]
+                                </span>
+                            </div>
+
+                            <!-- Ítem 2: Por Vencer -->
+                            <div class="p-2 bg-white rounded-3 shadow-sm border d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-warning-subtle text-warning-emphasis p-2 rounded-circle">
+                                        <i class="bi bi-capsule"></i>
+                                    </span>
+                                    <div>
+                                        <div class="fw-bold text-dark small">Amoxicilina</div>
+                                        <div class="text-muted smaller">250mg/5ml &bull; Suspensión &bull; 1 fco</div>
+                                    </div>
+                                </div>
+                                <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle rounded-pill">
+                                    <i class="bi bi-exclamation-triangle"></i> @string.Format(Loc["Hero_Status_ExpiringDays"], 15)
+                                </span>
+                            </div>
+
+                            <!-- Ítem 3: Vencido -->
+                            <div class="p-2 bg-white rounded-3 shadow-sm border d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-danger-subtle text-danger p-2 rounded-circle">
+                                        <i class="bi bi-capsule"></i>
+                                    </span>
+                                    <div>
+                                        <div class="fw-bold text-dark small">Ibuprofeno</div>
+                                        <div class="text-muted smaller">400mg &bull; Cápsulas &bull; 8 uds</div>
+                                    </div>
+                                </div>
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill">
+                                    <i class="bi bi-x-circle"></i> @Loc["Hero_Status_Expired"]
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Pie de Demostración -->
+                        <div class="mt-3 text-center">
+                            <span class="badge bg-secondary bg-opacity-10 text-muted px-3 py-2 rounded-pill small">
+                                <i class="bi bi-lightning-charge-fill text-warning me-1"></i> @Loc["Hero_Card_BlazorBanner"]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 2. CARACTERÍSTICAS PRINCIPALES (FEATURES SECTION)                         -->
+<!-- ========================================================================= -->
+<section id="features" class="py-5 bg-white">
+    <div class="container py-lg-4">
+        <div class="text-center mb-5 max-w-700 mx-auto">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-2 fw-semibold">
+                @Loc["Features_Badge"]
+            </span>
+            <h2 class="display-6 fw-bold text-dark mb-3">
+                @Loc["Features_Title"]
+            </h2>
+            <p class="text-muted">
+                @Loc["Features_Subtitle"]
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Característica 1: Semáforo de Vencimiento -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 p-4 border rounded-4 shadow-sm">
+                    <div class="feature-icon-wrapper mb-3 bg-danger bg-opacity-10 text-danger rounded-3 d-inline-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar2-heart fs-3"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">@Loc["Feature_Expirations_Title"]</h5>
+                    <p class="text-muted small mb-0">
+                        @Loc["Feature_Expirations_Desc"]
+                    </p>
+                </div>
+            </div>
+
+            <!-- Característica 2: Catálogo Maestro -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 p-4 border rounded-4 shadow-sm">
+                    <div class="feature-icon-wrapper mb-3 bg-primary bg-opacity-10 text-primary rounded-3 d-inline-flex align-items-center justify-content-center">
+                        <i class="bi bi-capsule fs-3"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">@Loc["Feature_Catalog_Title"]</h5>
+                    <p class="text-muted small mb-0">
+                        @Loc["Feature_Catalog_Desc"]
+                    </p>
+                </div>
+            </div>
+
+            <!-- Característica 3: Inventario Inteligente (CRUD) -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 p-4 border rounded-4 shadow-sm">
+                    <div class="feature-icon-wrapper mb-3 bg-success bg-opacity-10 text-success rounded-3 d-inline-flex align-items-center justify-content-center">
+                        <i class="bi bi-box-seam fs-3"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">@Loc["Feature_Inventory_Title"]</h5>
+                    <p class="text-muted small mb-0">
+                        @Loc["Feature_Inventory_Desc"]
+                    </p>
+                </div>
+            </div>
+
+            <!-- Característica 4: Búsqueda con Cero Latencia -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 p-4 border rounded-4 shadow-sm">
+                    <div class="feature-icon-wrapper mb-3 bg-info bg-opacity-10 text-info rounded-3 d-inline-flex align-items-center justify-content-center">
+                        <i class="bi bi-search fs-3"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">@Loc["Feature_Search_Title"]</h5>
+                    <p class="text-muted small mb-0">
+                        @Loc["Feature_Search_Desc"]
+                    </p>
+                </div>
+            </div>
+
+            <!-- Característica 5: Dashboard Analítico -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 p-4 border rounded-4 shadow-sm">
+                    <div class="feature-icon-wrapper mb-3 bg-warning bg-opacity-10 text-warning-emphasis rounded-3 d-inline-flex align-items-center justify-content-center">
+                        <i class="bi bi-pie-chart-fill fs-3"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">@Loc["Feature_Analytics_Title"]</h5>
+                    <p class="text-muted small mb-0">
+                        @Loc["Feature_Analytics_Desc"]
+                    </p>
+                </div>
+            </div>
+
+            <!-- Característica 6: Seguridad de Grado Criptográfico -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 p-4 border rounded-4 shadow-sm">
+                    <div class="feature-icon-wrapper mb-3 bg-secondary bg-opacity-10 text-secondary rounded-3 d-inline-flex align-items-center justify-content-center">
+                        <i class="bi bi-shield-lock-fill fs-3"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">@Loc["Feature_Security_Title"]</h5>
+                    <p class="text-muted small mb-0">
+                        @Loc["Feature_Security_Desc"]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 3. MÓDULOS DEL SISTEMA: CATÁLOGO E INVENTARIO                            -->
+<!-- ========================================================================= -->
+<section id="catalog" class="py-5 bg-light border-top border-bottom">
+    <div class="container py-lg-4">
+        <!-- Subsección: Catálogo Maestro -->
+        <div class="row align-items-center g-5 mb-5">
+            <div class="col-lg-6 order-lg-1 order-2">
+                <div class="card border-0 shadow rounded-4 overflow-hidden">
+                    <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                        <div class="fw-bold text-primary">
+                            <i class="bi bi-capsule me-2"></i>@Loc["Catalog_Module_Title"]
+                        </div>
+                        <span class="badge bg-primary-subtle text-primary rounded-pill">@Loc["Catalog_Table_Active"]</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light small">
+                                <tr>
+                                    <th>@Loc["Catalog_Table_Medicine"]</th>
+                                    <th>@Loc["Catalog_Table_Form"]</th>
+                                    <th>@Loc["Catalog_Table_Dosage"]</th>
+                                    <th>@Loc["Catalog_Table_Status"]</th>
+                                </tr>
+                            </thead>
+                            <tbody class="small">
+                                <tr>
+                                    <td class="fw-semibold">Amoxicilina</td>
+                                    <td><span class="badge bg-secondary bg-opacity-10 text-dark">Suspensión</span></td>
+                                    <td>250mg / 5ml</td>
+                                    <td><span class="badge bg-success-subtle text-success">@Loc["Catalog_Table_Active"]</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Ibuprofeno</td>
+                                    <td><span class="badge bg-secondary bg-opacity-10 text-dark">Cápsulas</span></td>
+                                    <td>400mg</td>
+                                    <td><span class="badge bg-success-subtle text-success">@Loc["Catalog_Table_Active"]</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Loratadina</td>
+                                    <td><span class="badge bg-secondary bg-opacity-10 text-dark">Jarabe</span></td>
+                                    <td>100mg / 100ml</td>
+                                    <td><span class="badge bg-success-subtle text-success">@Loc["Catalog_Table_Active"]</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Omeprazol</td>
+                                    <td><span class="badge bg-secondary bg-opacity-10 text-dark">Cápsulas</span></td>
+                                    <td>20mg</td>
+                                    <td><span class="badge bg-success-subtle text-success">@Loc["Catalog_Table_Active"]</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-2 order-1">
+                <div class="ps-lg-4">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill mb-2 fw-semibold">
+                        @Loc["Catalog_Module_Badge"]
+                    </span>
+                    <h3 class="display-6 fw-bold text-dark mb-3">@Loc["Catalog_Module_Title"]</h3>
+                    <p class="text-muted mb-4">
+                        @Loc["Catalog_Module_Desc"]
+                    </p>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check2-circle text-primary fs-5"></i>
+                            <span>@Loc["Catalog_Module_Pill1"]</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check2-circle text-primary fs-5"></i>
+                            <span>@Loc["Catalog_Module_Pill2"]</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check2-circle text-primary fs-5"></i>
+                            <span>@Loc["Catalog_Module_Pill3"]</span>
+                        </li>
+                    </ul>
+                    <a href="/medicines" class="btn btn-primary fw-semibold px-4 py-2">
+                        <i class="bi bi-eye me-1"></i> @Loc["Catalog_Module_Btn"]
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsección: Inventario Activo -->
+        <div id="inventory" class="row align-items-center g-5 pt-4">
+            <div class="col-lg-6">
+                <div class="pe-lg-4">
+                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-1 rounded-pill mb-2 fw-semibold">
+                        @Loc["Inventory_Module_Badge"]
+                    </span>
+                    <h3 class="display-6 fw-bold text-dark mb-3">@Loc["Inventory_Module_Title"]</h3>
+                    <p class="text-muted mb-4">
+                        @Loc["Inventory_Module_Desc"]
+                    </p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white rounded-3 border shadow-sm">
+                                <div class="text-primary fw-bold fs-4 mb-1">@Loc["Inventory_Module_Stat1_Value"]</div>
+                                <div class="small text-muted">@Loc["Inventory_Module_Stat1_Label"]</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white rounded-3 border shadow-sm">
+                                <div class="text-success fw-bold fs-4 mb-1">@Loc["Inventory_Module_Stat2_Value"]</div>
+                                <div class="small text-muted">@Loc["Inventory_Module_Stat2_Label"]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/inventory" class="btn btn-outline-primary fw-semibold px-4 py-2">
+                        <i class="bi bi-box-seam me-1"></i> @Loc["Inventory_Module_Btn"]
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow rounded-4 overflow-hidden">
+                    <div class="card-header bg-white py-3 px-4 border-bottom d-flex justify-content-between align-items-center">
+                        <div class="fw-bold text-success">
+                            <i class="bi bi-boxes me-2"></i>@Loc["Inventory_Card_Title"]
+                        </div>
+                        <span class="badge bg-success-subtle text-success rounded-pill">@Loc["Inventory_Card_Badge"]</span>
+                    </div>
+                    <div class="card-body p-4 bg-white">
+                        <div class="alert alert-warning border-0 border-start border-warning border-4 shadow-sm mb-3 p-3">
+                            <div class="d-flex align-items-center gap-2 fw-bold text-warning-emphasis mb-1">
+                                <i class="bi bi-bell-fill"></i> @Loc["Inventory_Alert_Title"]
+                            </div>
+                            <div class="small text-secondary">
+                                @Loc["Inventory_Alert_Desc"]
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <div class="fw-bold text-dark">Amoxicilina 250mg</div>
+                                <div class="text-muted smaller">Lote #AB-204 &bull; Vence: en 15 días</div>
+                            </div>
+                            <span class="badge bg-warning text-dark px-3 py-2">@Loc["Inventory_Status_Expiring"]</span>
+                        </div>
+
+                        <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="fw-bold text-dark">Loratadina 10mg</div>
+                                <div class="text-muted smaller">Lote #LK-991 &bull; Vence: hace 5 días</div>
+                            </div>
+                            <span class="badge bg-danger px-3 py-2">@Loc["Inventory_Status_Discard"]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,66 @@
+<footer class="bg-dark text-white-50 pt-5 pb-4 mt-auto border-top border-secondary border-opacity-25">
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <!-- Columna de Marca y Propósito -->
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-25 text-primary rounded-circle p-2 me-2">
+                        <i class="bi bi-capsule fs-4 text-white"></i>
+                    </span>
+                    <span class="fw-bold fs-4 text-white">
+                        Pharma<span class="text-primary">Vault</span>
+                    </span>
+                </div>
+                <p class="small text-secondary mb-3 leading-relaxed">
+                    @Loc["Footer_Tagline"]
+                </p>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-secondary bg-opacity-25 text-white fw-normal border border-secondary border-opacity-50">.NET 10</span>
+                    <span class="badge bg-secondary bg-opacity-25 text-white fw-normal border border-secondary border-opacity-50">Blazor Server</span>
+                    <span class="badge bg-secondary bg-opacity-25 text-white fw-normal border border-secondary border-opacity-50">PostgreSQL</span>
+                </div>
+            </div>
+
+            <!-- Columna de Navegación Rápida -->
+            <div class="col-lg-2 col-md-6 col-6">
+                <h6 class="text-white text-uppercase fw-bold fs-7 mb-3 tracking-wider">@Loc["Footer_Explore_Title"]</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2 small">
+                    <li><a href="/#top" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Home"]</a></li>
+                    <li><a href="/#features" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Features"]</a></li>
+                    <li><a href="/#catalog" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Catalog"]</a></li>
+                    <li><a href="/#inventory" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Inventory"]</a></li>
+                    <li><a href="/#contact" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Contact"]</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna de Accesos y Cuenta -->
+            <div class="col-lg-3 col-md-6 col-6">
+                <h6 class="text-white text-uppercase fw-bold fs-7 mb-3 tracking-wider">@Loc["Footer_Access_Title"]</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2 small">
+                    <li><a href="/login" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Login"]</a></li>
+                    <li><a href="/register" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Register"]</a></li>
+                    <li><a href="/dashboard" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Dashboard"]</a></li>
+                    <li><a href="/medicines" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Catalog"]</a></li>
+                    <li><a href="/inventory" class="text-white-50 text-decoration-none text-hover-white">@Loc["Nav_Inventory"]</a></li>
+                </ul>
+            </div>
+
+            
+        </div>
+
+        <hr class="border-secondary border-opacity-25 my-4" />
+
+        <!-- Fila de Derechos y Retorno Arriba -->
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 small text-secondary">
+            <div>
+                &copy; @DateTime.Now.Year PharmaVault. @Loc["Footer_Rights"]
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+                <a href="/#top" class="text-white-50 text-decoration-none d-flex align-items-center gap-1 text-hover-white">
+                    <span>@Loc["Footer_BackToTop"]</span>
+                    <i class="bi bi-arrow-up-circle fs-6"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

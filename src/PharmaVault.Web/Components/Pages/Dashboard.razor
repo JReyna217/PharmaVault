@@ -1,16 +1,16 @@
-﻿@page "/dashboard"
+@page "/dashboard"
 @rendermode InteractiveServer
 @using Microsoft.AspNetCore.Authorization
 
 @attribute [Authorize]
 
-<PageTitle>Dashboard - PharmaVault</PageTitle>
+<PageTitle>@Loc["Dashboard_Title"] - PharmaVault</PageTitle>
 
 <div class="container-fluid mt-4">
     <div class="row mb-4">
         <div class="col-12">
-            <h1 class="display-5 fw-bold text-primary">Welcome to PharmaVault, @UserName !</h1>
-            <p class="lead text-muted">Today is @CurrentDate</p>
+            <h1 class="display-5 fw-bold text-primary">@string.Format(Loc["Dashboard_Welcome"], UserName)</h1>
+            <p class="lead text-muted">@string.Format(Loc["Dashboard_Today"], CurrentDate)</p>
             <hr class="my-4" />
         </div>
     </div>
@@ -19,7 +19,7 @@
     {
         <div class="d-flex align-items-center text-primary">
             <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-            <strong>Loading your statistics...</strong>
+            <strong>@Loc["Dashboard_Loading"]</strong>
         </div>
     }
     else if (_stats.TotalStock == 0)
@@ -27,8 +27,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="alert alert-info shadow-sm border-0 border-start border-info border-5" role="alert">
-                    <h4 class="alert-heading"><i class="bi bi-info-circle me-2"></i>No stock registered yet!</h4>
-                    <p>Your inventory is currently empty. Head over to the <a href="inventory" class="alert-link">Inventory</a> section to start adding your first medicines.</p>
+                    <h4 class="alert-heading"><i class="bi bi-info-circle me-2"></i>@Loc["Dashboard_NoStockTitle"]</h4>
+                    <p>@Loc["Dashboard_NoStockDesc"]</p>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">Total Units</h6>
+                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">@Loc["Dashboard_TotalUnits"]</h6>
                                 <h2 class="mt-2 mb-0 display-5 fw-bold">@_stats.TotalStock</h2>
                             </div>
                             <i class="bi bi-box-seam fs-1 opacity-50"></i>
@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">Good Condition</h6>
+                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">@Loc["Dashboard_GoodCondition"]</h6>
                                 <h2 class="mt-2 mb-0 display-5 fw-bold">@_stats.GoodStock</h2>
                             </div>
                             <i class="bi bi-check-circle fs-1 opacity-50"></i>
@@ -69,7 +69,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">Expiring Soon (30d)</h6>
+                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">@Loc["Dashboard_ExpiringSoon"]</h6>
                                 <h2 class="mt-2 mb-0 display-5 fw-bold">@_stats.ExpiringSoonStock</h2>
                             </div>
                             <i class="bi bi-exclamation-triangle fs-1 opacity-50"></i>
@@ -83,7 +83,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">Expired</h6>
+                                <h6 class="card-title mb-0 text-uppercase fw-bold opacity-75">@Loc["Dashboard_Expired"]</h6>
                                 <h2 class="mt-2 mb-0 display-5 fw-bold">@_stats.ExpiredStock</h2>
                             </div>
                             <i class="bi bi-x-octagon fs-1 opacity-50"></i>
@@ -97,7 +97,7 @@
             <div class="col-md-6">
                 <div class="card shadow-sm border-0 h-100">
                     <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
-                        <h5 class="mb-0 fw-bold text-secondary">Inventory Health</h5>
+                        <h5 class="mb-0 fw-bold text-secondary">@Loc["Dashboard_ChartTitle"]</h5>
                     </div>
                     <div class="card-body py-4">
                         <ApexChart TItem="InventoryChartData"

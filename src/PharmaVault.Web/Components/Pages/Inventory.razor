@@ -1,4 +1,4 @@
-﻿@page "/inventory"
+@page "/inventory"
 
 @using Microsoft.AspNetCore.Authorization
 @using PharmaVault.Core.Models
@@ -6,42 +6,41 @@
 @attribute [Authorize]
 @rendermode InteractiveServer
 
-
-<PageTitle>My Inventory - PharmaVault</PageTitle>
+<PageTitle>@Loc["Inventory_Title"] - PharmaVault</PageTitle>
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary fw-bold">My inventory</h2>
+    <h2 class="text-primary fw-bold">@Loc["Inventory_Title"]</h2>
     <div class="d-flex gap-3">
         <div class="input-group">
             <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-            <input type="text" class="form-control" placeholder="Search medicine..." 
+            <input type="text" class="form-control" placeholder="@Loc["Inventory_Search_Placeholder"]" 
                    @bind="_searchTerm" @bind:event="oninput" />
         </div>
         
         <button class="btn btn-primary text-nowrap" @onclick="PrepareForAdd">
-            <i class="bi bi-plus-circle me-1"></i> Add Stock
+            <i class="bi bi-plus-circle me-1"></i> @Loc["Inventory_AddBtn"]
         </button>
     </div>
 </div>
 
 @if (_inventoryItems == null)
 {
-    <p><em>Loading your inventory...</em></p>
+    <p><em>@Loc["Inventory_Loading"]</em></p>
 }
 else if (!_inventoryItems.Any())
 {
-    <div class="alert alert-info">Your inventory is empty. Add some medicines to get started!</div>
+    <div class="alert alert-info">@Loc["Inventory_Empty"]</div>
 }
 else
 {
     <table class="table table-hover shadow-sm bg-white rounded">
         <thead class="table-dark">
             <tr>
-                <th>Medicine</th>
-                <th>Quantity</th>
-                <th>Expiration</th>
-                <th>Notes</th>
-                <th>Actions</th>
+                <th>@Loc["Inventory_Th_Medicine"]</th>
+                <th>@Loc["Inventory_Th_Quantity"]</th>
+                <th>@Loc["Inventory_Th_Expiration"]</th>
+                <th>@Loc["Inventory_Th_Notes"]</th>
+                <th>@Loc["Inventory_Th_Actions"]</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +56,7 @@ else
                         @item.ExpirationDate.ToShortDateString()
                         @if (item.IsExpired)
                         {
-                            <span class="badge bg-danger ms-2">Expired</span>
+                            <span class="badge bg-danger ms-2">@Loc["Inventory_Badge_Expired"]</span>
                         }
                     </td>
                     <td class="align-middle">@item.PrescriptionNotes</td>
@@ -81,7 +80,7 @@ else
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@(_currentInventory.InventoryId == 0 ? "Add to Inventory" : "Edit Inventory")</h5>
+                    <h5 class="modal-title">@(_currentInventory.InventoryId == 0 ? Loc["Inventory_Modal_Add"] : Loc["Inventory_Modal_Edit"])</h5>
                     <button type="button" class="btn-close" @onclick="CloseModal"></button>
                 </div>
                 <div class="modal-body">
@@ -89,9 +88,9 @@ else
                         <DataAnnotationsValidator />
 
                         <div class="mb-3">
-                            <label class="form-label">Medicine from Catalog</label>
+                            <label class="form-label">@Loc["Inventory_Form_Medicine"]</label>
                             <InputSelect @bind-Value="_currentInventory.CatalogId" class="form-select">
-                                <option value="0">-- Select a Medicine --</option>
+                                <option value="0">-- @Loc["Inventory_Form_SelectMedicine"] --</option>
                                 @foreach (var cat in _catalogItems)
                                 {
                                     <option value="@cat.CatalogId">@cat.Name (@cat.PharmaceuticalForm)</option>
@@ -101,26 +100,26 @@ else
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Quantity (Boxes/Units)</label>
+                            <label class="form-label">@Loc["Inventory_Form_Quantity"]</label>
                             <InputNumber @bind-Value="_currentInventory.Quantity" class="form-control" />
                             <ValidationMessage For="@(() => _currentInventory.Quantity)" class="text-danger" />
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Expiration Date</label>
+                            <label class="form-label">@Loc["Inventory_Form_Expiration"]</label>
                             <InputDate @bind-Value="_currentInventory.ExpirationDate" class="form-control" />
                             <ValidationMessage For="@(() => _currentInventory.ExpirationDate)" class="text-danger" />
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Notes (e.g., Take with food)</label>
+                            <label class="form-label">@Loc["Inventory_Form_Notes"]</label>
                             <InputTextArea @bind-Value="_currentInventory.PrescriptionNotes" class="form-control" />
                             <ValidationMessage For="@(() => _currentInventory.PrescriptionNotes)" class="text-danger" />
                         </div>
 
                         <div class="text-end">
-                            <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Save to Inventory</button>
+                            <button type="button" class="btn btn-secondary me-2" @onclick="CloseModal">@Loc["Inventory_Form_Cancel"]</button>
+                            <button type="submit" class="btn btn-primary">@Loc["Inventory_Form_Save"]</button>
                         </div>
                     </EditForm>
                 </div>

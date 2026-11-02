@@ -1,0 +1,38 @@
+@inherits LayoutComponentBase
+@implements IDisposable
+@using PharmaVault.Web.Components.Landing
+
+<div id="top" class="landing-layout d-flex flex-column min-vh-100 bg-white">
+    <LandingNavbar @rendermode="InteractiveServer" />
+    
+    <main class="flex-grow-1">
+        <GlobalErrorBoundary>
+            @Body
+        </GlobalErrorBoundary>
+    </main>
+
+    <LandingFooter />
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    @Loc["Error_Unhandled"]
+    <a href="." class="reload">@Loc["Error_Reload"]</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CultureState.OnCultureChanged += HandleCultureChanged;
+    }
+
+    private void HandleCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureState.OnCultureChanged -= HandleCultureChanged;
+    }
+}

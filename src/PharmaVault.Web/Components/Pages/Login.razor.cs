@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using PharmaVault.Core.Interfaces;
+using PharmaVault.Web;
 
 namespace PharmaVault.Web.Components.Pages;
 
@@ -55,17 +56,17 @@ public partial class Login : ComponentBase
         }
         else
         {
-            ErrorMessage = "Invalid email or password.";
+            ErrorMessage = Loc["Login_InvalidCredentials"];
         }
     }
 
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email format.")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_EmailRequired")]
+        [EmailAddress(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_EmailInvalid")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Password is required.")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "Validation_PasswordRequired")]
         public string Password { get; set; } = string.Empty;
     }
 }
